@@ -4,7 +4,7 @@ exports.handler = async function(event, context) {
   console.log("event", event);
   return {
     statusCode: 200,
-    body: JSON.stringify({ message: test })
+    body: JSON.stringify({ message: "test" })
   };
 };
 //# sourceMappingURL=health_effect.js.map
