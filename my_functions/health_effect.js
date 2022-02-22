@@ -1,5 +1,5 @@
 
-import fetch from 'node-fetch';
+// import fetch from 'node-fetch';
 
 // const endpointMaker = (n) => `https://wise.vub.ac.be/fuseki/${n}/sparql`;
 // const constructQuery = (e, q) => `${endpointMaker(e)}?query=${encodeURIComponent(q)}&format=json`;
