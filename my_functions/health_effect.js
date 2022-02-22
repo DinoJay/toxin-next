@@ -136,14 +136,18 @@ const sparqlQuery = `
 exports.handler = async function (event, context) {
     console.log('context', context);
     console.log('event', event);
-    return fetch(constructQuery('repeated-toxicity', sparqlQuery)).then((res) => res.json()).then(res => {
-        // console.log('res', res)
+    // fetch(constructQuery('repeated-toxicity', sparqlQuery)).then((res) => res.json()).then(res => {
+    //     // console.log('res', res)
 
-        return {
-            statusCode: 200,
-            body: JSON.stringify(res),
-        };
+    //     return {
+    //         statusCode: 200,
+    //         body: JSON.stringify(res),
+    //     };
 
-    })
+    // })
+    return {
+        statusCode: 200,
+        body: JSON.stringify({ message: test }),
+    };
 
 }
