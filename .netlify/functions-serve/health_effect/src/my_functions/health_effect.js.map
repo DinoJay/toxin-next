@@ -1,0 +1,8 @@
+{
+  "version": 3,
+  "sources": ["../../../../../../Users/jan/dev/toxin-next/my_functions/health_effect.js"],
+  "sourceRoot": "/var/folders/7t/84dntczj4c72zrm8pfk8p53r0000gn/T/tmp-32671-kxvzOijBpMy1",
+  "sourcesContent": ["exports.handler = async function (event, context) {\n    console.log('context', context);\n    console.log('event', event);\n    return {\n        statusCode: 200,\n        body: JSON.stringify({ message: \"Hello World\" }),\n    };\n}"],
+  "mappings": ";AAAA,QAAQ,UAAU,eAAgB,OAAO,SAAS;AAC9C,UAAQ,IAAI,WAAW;AACvB,UAAQ,IAAI,SAAS;AACrB,SAAO;AAAA,IACH,YAAY;AAAA,IACZ,MAAM,KAAK,UAAU,EAAE,SAAS;AAAA;AAAA;",
+  "names": []
+}
