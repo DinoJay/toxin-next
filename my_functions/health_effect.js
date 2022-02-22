@@ -136,7 +136,7 @@ const sparqlQuery = `
 exports.handler = async function (event, context) {
     console.log('context', context);
     console.log('event', event);
-    fetch(constructQuery('repeated-toxicity', sparqlQuery)).then((res) => res.json()).then(res => {
+    return fetch(constructQuery('repeated-toxicity', sparqlQuery)).then((res) => res.json()).then(res => {
         // console.log('res', res)
 
         return {
