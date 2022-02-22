@@ -143,6 +143,7 @@ exports.handler = async (event, context) => {
         response = await fetch(API_ENDPOINT)
         // handle response
     } catch (err) {
+        console.log('error', err)
         return {
             statusCode: err.statusCode || 500,
             body: JSON.stringify({
