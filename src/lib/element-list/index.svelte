@@ -1,5 +1,5 @@
 <script>
-	import { group } from 'd3-array';
+	import group from '$lib/group';
 	import { v4 as uuidv4 } from 'uuid';
 
 	import VerticalList from './verticalList.svelte';
