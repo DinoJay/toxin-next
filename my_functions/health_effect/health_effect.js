@@ -133,7 +133,7 @@
 // 		}	
 // 	`;
 
-const fetch = require('node-fetch')
+import fetch from 'node-fetch'
 
 const API_ENDPOINT = 'https://cat-fact.herokuapp.com/facts'
 
