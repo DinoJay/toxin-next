@@ -1,5 +1,5 @@
 <script>
-	import { dsv } from 'd3-fetch';
+	// import { dsv } from 'd3-fetch';
 	import { v4 as uuidv4 } from 'uuid';
 	import ViewList from '$lib/ViewList.svelte';
 	import { onMount } from 'svelte';
@@ -173,97 +173,78 @@
 
 	let dataPromise = null;
 
-	onMount(() => {
-		const acuteToxicity = dsv(';', 'db_acute_toxicity.csv', cleanDatum);
-		const irritationCorosivity = dsv(';', 'db_irritation_corosivity.csv', cleanDatum);
-		const repeatedToxicity = dsv(';', 'db_repeated_toxicity.csv', cleanDatum);
-		const skinAbsorption = dsv(';', 'skinAbsorption.csv', cleanDatum);
-		const toxicokinetics = dsv(';', 'toxicokinetics.csv', cleanDatum);
-		const chemicalIdentity = dsv(';', 'chemical_identity.csv', (d) => cleanKeys(d));
-		dataPromise = Promise.all([
-			acuteToxicity,
-			irritationCorosivity,
-			repeatedToxicity,
-			// skinAbsorption,
-			// toxicokinetics,
-			chemicalIdentity
-		]).then(([ac, irr, rep, chem]) => [
-			ac.map((d, i) => ({
-				...d,
-				id: `${uuidv4()}-${i}-${d.dossier}`,
-				compound: cleanKey(d.dossier),
-				type: 'acute toxicity',
-				categories: { ...d.categories, health_effect: 'acute toxicity' }
-				// ...cleanKeys(d)
-			})),
-			irr.map((d, i) => ({
-				...d,
-				id: `${uuidv4()}-${ac.length + i}-${d.dossier}`,
-				compound: cleanKey(d.dossier),
-				type: 'irritation corosivity',
-				categories: { ...d.categories, health_effect: 'irritation corosivity' }
-			})),
-			rep.map((d, i) => ({
-				...d,
-				id: `${uuidv4()}-${ac.length + irr.length + i}-${d.dossier}`,
-				compound: cleanKey(d.dossier),
-				type: 'repeated toxicity',
-				categories: { ...d.categories, health_effect: 'repeated toxicity' }
-			})),
-			// skin.map((d, i) => ({
-			// 	...d,
-			// 	id: `${uuidv4()}-${ac.length + irr.length + i}-${d.dossier}`,
-			// 	compound: d.dossier,
-			// 	type: 'skin absorption'
-			// })),
-			// toxico.map((d, i) => ({
-			// 	...d,
-			// 	id: `${uuidv4()}-${ac.length + irr.length + i}-${d.dossier}`,
-			// 	compound: d.dossier,
-			// 	type: 'toxicokinetics'
-			// })),
-			chem.map((d, i) => ({
-				...d,
-				id: uuidv4(),
-				compound: cleanKey(d.dossier),
-				categories: { ...d.categories, type: 'chemical identity' },
-				// .replace(/ *\([^)]*\) */g, '')
-				// .replaceAll('  ', ' ')
-				// .trim()
-				// .replaceAll(' ', '_')
-				// .toLowerCase()
-				// .replaceAll('._', '_')
-				// .replaceAll('_/', '')
-				// .replaceAll('/', '_'),
-				// compound: d.dossier,
-				type: 'chemical identity'
-				// ...cleanKeys()
-			}))
-		]);
-	});
+	// onMount(() => {
+	// 	const acuteToxicity = dsv(';', 'db_acute_toxicity.csv', cleanDatum);
+	// 	const irritationCorosivity = dsv(';', 'db_irritation_corosivity.csv', cleanDatum);
+	// 	const repeatedToxicity = dsv(';', 'db_repeated_toxicity.csv', cleanDatum);
+	// 	const skinAbsorption = dsv(';', 'skinAbsorption.csv', cleanDatum);
+	// 	const toxicokinetics = dsv(';', 'toxicokinetics.csv', cleanDatum);
+	// 	const chemicalIdentity = dsv(';', 'chemical_identity.csv', (d) => cleanKeys(d));
+	// 	dataPromise = Promise.all([
+	// 		acuteToxicity,
+	// 		irritationCorosivity,
+	// 		repeatedToxicity,
+	// 		// skinAbsorption,
+	// 		// toxicokinetics,
+	// 		chemicalIdentity
+	// 	]).then(([ac, irr, rep, chem]) => [
+	// 		ac.map((d, i) => ({
+	// 			...d,
+	// 			id: `${uuidv4()}-${i}-${d.dossier}`,
+	// 			compound: cleanKey(d.dossier),
+	// 			type: 'acute toxicity',
+	// 			categories: { ...d.categories, health_effect: 'acute toxicity' }
+	// 			// ...cleanKeys(d)
+	// 		})),
+	// 		irr.map((d, i) => ({
+	// 			...d,
+	// 			id: `${uuidv4()}-${ac.length + i}-${d.dossier}`,
+	// 			compound: cleanKey(d.dossier),
+	// 			type: 'irritation corosivity',
+	// 			categories: { ...d.categories, health_effect: 'irritation corosivity' }
+	// 		})),
+	// 		rep.map((d, i) => ({
+	// 			...d,
+	// 			id: `${uuidv4()}-${ac.length + irr.length + i}-${d.dossier}`,
+	// 			compound: cleanKey(d.dossier),
+	// 			type: 'repeated toxicity',
+	// 			categories: { ...d.categories, health_effect: 'repeated toxicity' }
+	// 		})),
+	// 		// skin.map((d, i) => ({
+	// 		// 	...d,
+	// 		// 	id: `${uuidv4()}-${ac.length + irr.length + i}-${d.dossier}`,
+	// 		// 	compound: d.dossier,
+	// 		// 	type: 'skin absorption'
+	// 		// })),
+	// 		// toxico.map((d, i) => ({
+	// 		// 	...d,
+	// 		// 	id: `${uuidv4()}-${ac.length + irr.length + i}-${d.dossier}`,
+	// 		// 	compound: d.dossier,
+	// 		// 	type: 'toxicokinetics'
+	// 		// })),
+	// 		chem.map((d, i) => ({
+	// 			...d,
+	// 			id: uuidv4(),
+	// 			compound: cleanKey(d.dossier),
+	// 			categories: { ...d.categories, type: 'chemical identity' },
+	// 			// .replace(/ *\([^)]*\) */g, '')
+	// 			// .replaceAll('  ', ' ')
+	// 			// .trim()
+	// 			// .replaceAll(' ', '_')
+	// 			// .toLowerCase()
+	// 			// .replaceAll('._', '_')
+	// 			// .replaceAll('_/', '')
+	// 			// .replaceAll('/', '_'),
+	// 			// compound: d.dossier,
+	// 			type: 'chemical identity'
+	// 			// ...cleanKeys()
+	// 		}))
+	// 	]);
+	// });
 	let typeOfStudy = null;
 	let guideline = null;
 </script>
 
 <div />
 
-<div>
-	{#if dataPromise}
-		{#await dataPromise}
-			<p>...waiting</p>
-		{:then [acuteToxicityCsv, irritationCorosivityCsv, repeatedToxicityCsv, chemicalIdentity]}
-			<Filter
-				bind:typeOfStudy
-				bind:guideline
-				{chemicalIdentity}
-				{acuteToxicityCsv}
-				{irritationCorosivityCsv}
-				{repeatedToxicityCsv}
-			/>
-		{:catch error}
-			<p class="text-red-600">{error.message}</p>
-		{/await}
-	{:else}
-		<p class="">...waiting</p>
-	{/if}
-</div>
+<Filter />
