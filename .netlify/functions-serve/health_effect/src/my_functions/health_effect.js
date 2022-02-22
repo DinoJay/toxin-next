@@ -143,7 +143,7 @@ var sparqlQuery = `
 exports.handler = async function(event, context) {
   console.log("context", context);
   console.log("event", event);
-  fetch(constructQuery(endpoint, sparqlQuery)).then((res) => res.json()).then((res) => {
+  fetch(constructQuery("repeated-toxicity", sparqlQuery)).then((res) => res.json()).then((res) => {
     console.log("res", res);
     return {
       statusCode: 200,
