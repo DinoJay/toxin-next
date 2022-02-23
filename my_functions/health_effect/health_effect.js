@@ -171,31 +171,31 @@ exports.handler = async (event, context) => {
 		console.log('resp', resp);
 		let response
 		const API_ENDPOINT = constructQuery('repeated-toxicity', sparqlQuery)
-		// fetch(API_ENDPOINT).then(r => {
+		fetch(API_ENDPOINT).then(r => {
 
-		// 	console.log('r', r);
-		// 	return r.json()
-		// }).then(d => console.log('result', d))
-		// try {
-		// 	response = await fetch(API_ENDPOINT)
-		// 	// handle response
-		// } catch (err) {
-		// 	console.log('error', err)
-		// 	return {
-		// 		statusCode: err.statusCode || 500,
-		// 		body: JSON.stringify({
-		// 			error: err.message
-		// 		})
-		// 	}
-		// }
+			console.log('r', r);
+			return r.json()
+		}).then(d => console.log('result', d))
+		try {
+			response = await fetch(API_ENDPOINT)
+			// handle response
+		} catch (err) {
+			console.log('error', err)
+			return {
+				statusCode: err.statusCode || 500,
+				body: JSON.stringify({
+					error: err.message
+				})
+			}
+		}
 
-		// console.log('response', response)
-		// return {
-		// 	statusCode: 200,
-		// 	body: JSON.stringify({
-		// 		data: response
-		// 	})
-		// }
+		console.log('response', response)
+		return {
+			statusCode: 200,
+			body: JSON.stringify({
+				data: response
+			})
+		}
 
 	})
 }
