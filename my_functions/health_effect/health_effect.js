@@ -155,6 +155,7 @@ function fetchAuth() {
 		.then((result) => {
 			// console.log('server resp', result)
 			if (result.status != 200) {
+				console.log('bad server response', result)
 				throw new Error('Bad Server Response');
 			}
 			return result.text();
