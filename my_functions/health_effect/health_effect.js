@@ -154,35 +154,35 @@ function fetchAuth() {
 		// (C) SERVER RESPONSE
 		.then((result) => {
 			// console.log('server resp', result)
-			// if (result.status != 200) {
-			// 	throw new Error('Bad Server Response');
-			// }
+			if (result.status != 200) {
+				throw new Error('Bad Server Response');
+			}
 			return result.text();
 		})
 		.then((response) => {
 			console.log('success', response);
-			let response
-			const API_ENDPOINT = constructQuery('repeated-toxicity', sparqlQuery)
-			try {
-				response = await fetch(API_ENDPOINT)
-				// handle response
-			} catch (err) {
-				console.log('error', err)
-				return {
-					statusCode: err.statusCode || 500,
-					body: JSON.stringify({
-						error: err.message
-					})
-				}
-			}
+			// let response
+			// const API_ENDPOINT = constructQuery('repeated-toxicity', sparqlQuery)
+			// try {
+			// 	response = await fetch(API_ENDPOINT)
+			// 	// handle response
+			// } catch (err) {
+			// 	console.log('error', err)
+			// 	return {
+			// 		statusCode: err.statusCode || 500,
+			// 		body: JSON.stringify({
+			// 			error: err.message
+			// 		})
+			// 	}
+			// }
 
-			console.log('response', response)
-			return {
-				statusCode: 200,
-				body: JSON.stringify({
-					data: response
-				})
-			}
+			// console.log('response', response)
+			// return {
+			// 	statusCode: 200,
+			// 	body: JSON.stringify({
+			// 		data: response
+			// 	})
+			// }
 		})
 
 		// (D) HANDLE ERRORS (OPTIONAL)
