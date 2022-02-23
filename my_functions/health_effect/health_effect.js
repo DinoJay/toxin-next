@@ -170,7 +170,11 @@ exports.handler = async (event, context) => {
 	return fetchAuth().then(() => {
 		let response
 		const API_ENDPOINT = constructQuery('repeated-toxicity', sparqlQuery)
-		fetch(API_ENDPOINT).then(r => r.json()).then(d => console.log('result', d))
+		fetch(API_ENDPOINT).then(r => {
+
+			console.log('r', r);
+			return r.json()
+		}).then(d => console.log('result', d))
 		// try {
 		// 	response = await fetch(API_ENDPOINT)
 		// 	// handle response
