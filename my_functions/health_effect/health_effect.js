@@ -143,7 +143,7 @@ function fetchAuth() {
 	// (A) URL & CREDENTIALS
 	const url = 'https://wise.vub.ac.be/fuseki/';
 	const credentials = btoa('fuseki:ohYeeduoKae~joochotheechei6ONe');
-	console.log('credentials', credentials);
+	// console.log('credentials', credentials);
 
 	// (B) FETCH WITH HTTP AUTH
 	return fetch(url, {
@@ -154,9 +154,9 @@ function fetchAuth() {
 		// (C) SERVER RESPONSE
 		.then((result) => {
 			// console.log('server resp', result)
-			// if (result.status != 200) {
-			// 	throw new Error('Bad Server Response');
-			// }
+			if (result.status != 200) {
+				throw new Error('Bad Server Response');
+			}
 			return result.text();
 		})
 		// (D) HANDLE ERRORS (OPTIONAL)
@@ -167,14 +167,15 @@ function fetchAuth() {
 
 
 exports.handler = async (event, context) => {
-	return fetchAuth().then(() => {
+	return fetchAuth().then((resp) => {
+		console.log('resp', resp);
 		let response
 		const API_ENDPOINT = constructQuery('repeated-toxicity', sparqlQuery)
-		fetch(API_ENDPOINT).then(r => {
+		// fetch(API_ENDPOINT).then(r => {
 
-			console.log('r', r);
-			return r.json()
-		}).then(d => console.log('result', d))
+		// 	console.log('r', r);
+		// 	return r.json()
+		// }).then(d => console.log('result', d))
 		// try {
 		// 	response = await fetch(API_ENDPOINT)
 		// 	// handle response
