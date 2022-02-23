@@ -146,7 +146,7 @@ function fetchAuth() {
 	console.log('credentials', credentials);
 
 	// (B) FETCH WITH HTTP AUTH
-	fetch(url, {
+	return fetch(url, {
 		headers: {
 			Authorization: `Basic ${credentials}`
 		}
