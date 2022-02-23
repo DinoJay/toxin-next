@@ -168,9 +168,10 @@ function fetchAuth() {
 
 exports.handler = async (event, context) => {
 	return fetchAuth().then((resp) => {
-		console.log('resp', resp);
+		// console.log('resp', resp);
 		// 	let response
-		// 	const API_ENDPOINT = constructQuery('repeated-toxicity', sparqlQuery)
+		const API_ENDPOINT = constructQuery('repeated-toxicity', sparqlQuery)
+		fetch(API_ENDPOINT).then(r => console.log('r', r));
 		// 	fetch(API_ENDPOINT).then(r => {
 
 		// 		console.log('r', r);
