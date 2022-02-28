@@ -49,7 +49,7 @@ function unique(values) {
 function nest(values, map, reduce, keys) {
     return (function regroup(values, i) {
         if (i >= keys.length) return reduce(values);
-        const groups = new InternMap();
+        const groups = new Map();
         const keyof = keys[i++];
         let index = -1;
         for (const value of values) {
